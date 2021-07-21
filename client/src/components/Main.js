@@ -9,6 +9,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import axios from 'axios'
 import { signOut } from '../redux/actions/authActions'
 
 const Main = () => {
@@ -41,9 +42,16 @@ const Main = () => {
               Приватный
             </p>
           </Link>
+          <p className="cursor-pointer border-2 border-blue-600 text-center my-3" onClick={() => {
+            axios.get('/api/v1/private')
+              .then(({ data }) => alert(data.message))
+              .catch((e) => alert(e?.response?.data?.error))
+          }}>
+            Приватный API
+          </p>
         </div>
         {isAuth
-          ? <p className="cursor-pointer border-2 border-black text-center my-3" onClick={() => dispatch(signOut())}>
+          ? <p className="cursor-pointer border-2 border-blue-600 text-center my-3" onClick={() => dispatch(signOut())}>
             Выйти
           </p>
           : null}
