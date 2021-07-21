@@ -16,15 +16,4 @@ const signUpValidator = [
     .withMessage('Укажите роль: admin или user'),
 ]
 
-
-const signInValidator = [
-  check('email')
-    .isEmail()
-    .withMessage('Укажите верный email'),
-
-  check('password')
-    .isLength({ min: 6 })
-    .withMessage('Минимальная длина пароля 6 символов'),
-]
-
-export { signUpValidator, signInValidator }
+export { signUpValidator }

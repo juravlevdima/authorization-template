@@ -5,8 +5,8 @@ import { signUpValidator } from '../validators/authValidator.js'
 
 const router = express.Router()
 
-router.post('/signUp', signUpValidator, runValidation, signUp)
-router.post('/signIn', signIn)
+router.post('/sign-up', signUpValidator, runValidation, signUp)
+router.post('/sign-in', signIn)
 router.get('/authenticate', authenticate)
 
 export default router
