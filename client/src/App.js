@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { authenticate } from './redux/actions/authActions'
@@ -13,11 +13,9 @@ import SignUpPage from './components/SignUpPage'   // ----------- Demo component
 function App() {
   const dispatch = useDispatch()
   const { wait } = useSelector((s) => s.auth)
-  useEffect(() => {
-    dispatch(authenticate())
-  }, [dispatch])
 
   if (wait) {
+    dispatch(authenticate())
     return (
 
       // -----  Loading component during cookie authentication  -----

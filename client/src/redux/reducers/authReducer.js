@@ -7,7 +7,7 @@ const initialState = {
   user: {},
   isAuth: false,
   token: cookies.get('token'),
-  wait: true
+  wait: !!(cookies.get('token')),
 }
 
 const authReducer = (state = initialState, action) => {
