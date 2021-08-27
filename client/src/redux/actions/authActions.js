@@ -13,7 +13,7 @@ export function signOut() {
 export function authenticate() {
   return (dispatch) => {
     return axios.get('/api/v1/authenticate')
-      .then(({ data }) => dispatch({ type: t.AUTHENTICATE, data, isAuth: true }))
-      .catch(() => dispatch({ type: t.AUTHENTICATE, data: {}, isAuth: false }))
+      .then(({ data }) => dispatch({ type: t.AUTHENTICATE, user: data, isAuth: true }))
+      .catch(() => dispatch({ type: t.AUTHENTICATE, user: {}, isAuth: false }))
   }
 }

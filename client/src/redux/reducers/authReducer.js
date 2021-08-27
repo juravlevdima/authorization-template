@@ -30,7 +30,7 @@ const authReducer = (state = initialState, action) => {
     case t.AUTHENTICATE:
       return {
         ...state,
-        user: action.data,
+        user: action.user,
         isAuth: action.isAuth,
         wait: false
       }

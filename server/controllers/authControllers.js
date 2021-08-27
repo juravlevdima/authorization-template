@@ -22,9 +22,9 @@ export const signUp = (req, res) => {
 
 
 export const signIn = (req, res) => {
-  const { name, password } = req.body
+  const { email, password } = req.body
 
-  Users.findOne({ name }).exec((error, user) => {
+  Users.findOne({ email }).exec((error, user) => {
     if (error || !user) {
       return res.status(400).json({ error: 'Неверный логин или пароль' })
     }
@@ -33,14 +33,14 @@ export const signIn = (req, res) => {
       return res.status(401).json({ error: 'Неверный логин или пароль' })
     }
 
-    const { _id, name, role } = user
+    const { _id, email, role } = user
     const secret = process.env.SECRET_JWT_KEY || 'secret'
-    const token = jwt.sign({ _id, name, role }, secret, { expiresIn: '2h' })
+    const token = jwt.sign({ _id, email, role }, secret, { expiresIn: '2h' })
     res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 2 })
 
     return res.json({
       token,
-      user: { _id, name, role }
+      user: { _id, email, role }
     })
   })
 }
@@ -63,8 +63,8 @@ export const authenticate = (req, res) => {
         return res.status(401).json({ error: 'Пользователь не авторизован или был удален' })
       }
 
-      const { _id, name, role } = user
-      return res.json({ _id, name, role })
+      const { _id, email, role } = user
+      return res.json({ _id, email, role })
     })
   } catch (e) {
     return res.status(401).json({ error: 'Пользователь не авторизован' })
