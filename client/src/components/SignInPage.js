@@ -8,13 +8,13 @@
 
 import React, { useState } from 'react'
 import { useDispatch  } from 'react-redux'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import axios from 'axios'
 import { signIn } from '../redux/actions/authActions'
 
 const SignInPage = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [resError, setResError] = useState(null)
@@ -30,7 +30,7 @@ const SignInPage = () => {
     }).then(({ data }) => dispatch(signIn(data.user, data.token)))
       .then(() => {
         alert("Вы вошли!")
-        history.push('/')
+        navigate('/', { replace: true })
       })
       .catch(e => e?.response?.data?.error && setResError(e.response.data.error))
   }

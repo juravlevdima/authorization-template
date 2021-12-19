@@ -1,17 +1,28 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-const PrivateRoute = ({ component: Component, roles: accessRoles, ...rest }) => {
+// const PrivateRoute = ({ element: Component, roles: accessRoles, ...rest }) => {
+//   const { isAuth } = useSelector((s) => s.auth)
+//   const { role } = useSelector((s) => s.auth.user)
+//   return (
+//     <Route
+//       {...rest}
+//       render={(props) => isAuth && accessRoles?.includes(role)
+//         ? <Component {...props} />
+//         : <Navigate to="/" />}
+//     />
+//   )
+// }
+
+
+const PrivateRoute = ({ children, roles: accessRoles }) => {
   const { isAuth } = useSelector((s) => s.auth)
   const { role } = useSelector((s) => s.auth.user)
   return (
-    <Route
-      {...rest}
-      render={(props) => isAuth && accessRoles?.includes(role)
-        ? <Component {...props} />
-        : <Redirect to="/" />}
-    />
+    isAuth && accessRoles?.includes(role)
+      ? children
+      : <Navigate to="/" replace />
   )
 }
 

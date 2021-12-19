@@ -7,14 +7,11 @@
 
 
 import React, { useState } from 'react'
-import { useDispatch  } from 'react-redux'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { signIn } from '../redux/actions/authActions'
 
 const SignUpPage = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passRepeat, setPassRepeat] = useState('')
@@ -33,10 +30,9 @@ const SignUpPage = () => {
         email,
         password
       }
-    }).then(({ data }) => dispatch(signIn(data.user, data.token)))
-      .then(() => {
+    }).then(() => {
         alert("Вы зарегистрировались!")
-        history.push('/')
+        navigate('/', { replace: true })
       })
       .catch(e => e?.response?.data?.error && setResError(e.response.data.error))
   }
