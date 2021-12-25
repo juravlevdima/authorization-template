@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import chalk from "chalk";
 
 const dbConnect = () => {
   const mongooseOptions = {
@@ -9,8 +10,8 @@ const dbConnect = () => {
   }
 
   mongoose.connect(process.env.MONGO_URL, mongooseOptions)
-    .then(() => console.log(`DB is successfully connected`))
-    .catch((err) => console.log(`DB connect ERROR - ${err}`))
+    .then(() => console.log(chalk.green(`DB is successfully connected`)))
+    .catch((err) => console.log(chalk.red(`DB connect ERROR - ${err}`)))
 }
 
 export default dbConnect
