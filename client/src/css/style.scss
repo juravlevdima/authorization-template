@@ -1,4 +1,4 @@
-/* ------------normalize----------------- */
+/* --------------reset------------------- */
 :focus,:active{outline: none;}
 input::-ms-clear{display: none;}
 button, button:active {outline: none !important;}
@@ -11,5 +11,5 @@ input[type='number'] {-moz-appearance:textfield;}
 
 /* -------------custom------------------- */
 .custom-shadow {
-  box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
 }

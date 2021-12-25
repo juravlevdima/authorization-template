@@ -10,7 +10,9 @@
 
 ## Frontend:
 * React (Create React App)
+* React Router 6
 * Redux / ReduxThunk
+* Sass
 * TailwindCSS
 * Axios
 
@@ -19,7 +21,7 @@
 ### Installation
 
 ```Shell
-yarn install && yarn run client:install
+yarn && yarn run client:install
 ```
 Installs the dependencies.
 

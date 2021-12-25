@@ -6,15 +6,17 @@ import { Provider } from 'react-redux'
 import store from './redux/index.js'
 
 import './css/index.css' // tailwind compiled styles
-import './css/style.css' // custom styles
+import './css/style.scss' // custom styles
 
 import App from './App.js'
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 )
