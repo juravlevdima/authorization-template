@@ -15,8 +15,8 @@ const jwtOptions = {
 
 const jwtStrategy = new passportJWT.Strategy(jwtOptions, (payload, done) => {
   Users.findById({ _id: payload._id }, (err, user) => {
-    if (err) return done(err, null)
-    if (user) return done(err, user)
+    if (err) return done(err, false)
+    if (user) return done(null, user)
     return done(null, false)
   })
 })

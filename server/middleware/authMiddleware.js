@@ -5,9 +5,10 @@ const handleJWT = (req, res, next, roles) => {
     if (err || info || !user)
       return res.status(401).json({ err, info, error: "Доступ запрещен!" })
 
-    await req.logIn(user, { session: false })
     if (!roles.includes(user.role))
       return res.status(401).json({ error: "Доступ запрещен!" })
+
+    await req.logIn(user, { session: false })
 
     req.user = user
     return next()
@@ -16,7 +17,7 @@ const handleJWT = (req, res, next, roles) => {
 
 const authMiddleware = (roles = []) => {
   return (req, res, next) => {
-    const authenticate = passport.authenticate('jwt', { session: true }, handleJWT(req, res, next, roles))
+    const authenticate = passport.authenticate('jwt', { session: false }, handleJWT(req, res, next, roles))
     return authenticate(req, res, next)
   }
 }
