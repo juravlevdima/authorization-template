@@ -1,13 +1,13 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false,
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {
-      backgroundColor: ['active', 'group-focus']
+    container: {
+      center: true,
     },
+    extend: {},
   },
   plugins: [],
 }

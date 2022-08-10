@@ -13,7 +13,7 @@
 * React Router 6
 * Redux / ReduxThunk
 * Sass
-* TailwindCSS
+* TailwindCSS v3
 * Axios
 
 ## In the project directory, you can run:
