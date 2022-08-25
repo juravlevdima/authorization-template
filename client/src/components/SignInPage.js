@@ -1,42 +1,39 @@
-
-
 // ---------------------------------------------------------------
 // ----  This component is an authorization demonstration!!!  ----
 // ---------------------------------------------------------------
 
-
-
-import React, { useState } from 'react'
-import { useDispatch  } from 'react-redux'
-import { useNavigate } from 'react-router'
-import axios from 'axios'
-import { signIn } from '../redux/actions/authActions'
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router"
+import axios from "axios"
+import { signIn } from "../redux/actions/authActions"
 
 const SignInPage = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [resError, setResError] = useState(null)
 
   const signInButtonClick = () => {
     axios({
-      method: 'POST',
-      url: '/api/v1/sign-in',
+      method: "POST",
+      url: "/api/v1/sign-in",
       data: {
         email,
-        password
-      }
-    }).then(({ data }) => dispatch(signIn(data.user, data.token)))
+        password,
+      },
+    })
+      .then(({ data }) => dispatch(signIn(data.user, data.token)))
       .then(() => {
         alert("Вы вошли!")
-        navigate('/', { replace: true })
+        navigate("/", { replace: true })
       })
-      .catch(e => e?.response?.data?.error && setResError(e.response.data.error))
+      .catch((e) => e?.response?.data?.error && setResError(e.response.data.error))
   }
 
   const signInButtonKeyPress = (e) => {
-    if(e.key === 'Enter' && email && password) signInButtonClick()
+    if (e.key === "Enter" && email && password) signInButtonClick()
   }
 
   return (

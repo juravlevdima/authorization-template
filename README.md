@@ -16,6 +16,10 @@
 * TailwindCSS v3
 * Axios
 
+## Project:
+* Docker
+* Prettier
+
 ## In the project directory, you can run:
 
 ### Installation

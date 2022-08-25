@@ -1,5 +1,5 @@
 import axios from "axios"
-import t from '../types/authActionTypes'
+import t from "../types/authActionTypes"
 
 export function signIn(user, token) {
   const isAuth = !!token
@@ -12,7 +12,8 @@ export function signOut() {
 
 export function authenticate() {
   return (dispatch) => {
-    return axios.get('/api/v1/authenticate')
+    return axios
+      .get("/api/v1/authenticate")
       .then(({ data }) => dispatch({ type: t.AUTHENTICATE, user: data, isAuth: true }))
       .catch(() => dispatch({ type: t.AUTHENTICATE, user: {}, isAuth: false }))
   }

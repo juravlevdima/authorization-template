@@ -1,13 +1,13 @@
-import Cookies from 'universal-cookie'
-import t from '../types/authActionTypes'
+import Cookies from "universal-cookie"
+import t from "../types/authActionTypes"
 
 const cookies = new Cookies()
 
 const initialState = {
   user: {},
   isAuth: false,
-  token: cookies.get('token'),
-  wait: !!(cookies.get('token')),
+  token: cookies.get("token"),
+  wait: !!cookies.get("token"),
 }
 
 const authReducer = (state = initialState, action) => {
@@ -17,22 +17,22 @@ const authReducer = (state = initialState, action) => {
         ...state,
         user: action.user,
         token: action.token,
-        isAuth: action.isAuth
+        isAuth: action.isAuth,
       }
     case t.SIGN_OUT:
-      cookies.remove('token', { path: '/' })
+      cookies.remove("token", { path: "/" })
       return {
         ...state,
         user: {},
         isAuth: false,
-        token: null
+        token: null,
       }
     case t.AUTHENTICATE:
       return {
         ...state,
         user: action.user,
         isAuth: action.isAuth,
-        wait: false
+        wait: false,
       }
     default:
       return state

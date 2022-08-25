@@ -1,6 +1,6 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React from "react"
+import { Navigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 // const PrivateRoute = ({ element: Component, roles: accessRoles, ...rest }) => {
 //   const { isAuth } = useSelector((s) => s.auth)
@@ -15,15 +15,10 @@ import { useSelector } from 'react-redux'
 //   )
 // }
 
-
 const PrivateRoute = ({ children, roles: accessRoles }) => {
   const { isAuth } = useSelector((s) => s.auth)
   const { role } = useSelector((s) => s.auth.user)
-  return (
-    isAuth && accessRoles?.includes(role)
-      ? children
-      : <Navigate to="/" replace />
-  )
+  return isAuth && accessRoles?.includes(role) ? children : <Navigate to="/" replace />
 }
 
 export default PrivateRoute

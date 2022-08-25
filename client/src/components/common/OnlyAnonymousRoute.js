@@ -1,6 +1,6 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React from "react"
+import { Navigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 // const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
 //   const { isAuth } = useSelector((s) => s.auth)
@@ -16,11 +16,7 @@ import { useSelector } from 'react-redux'
 
 const OnlyAnonymousRoute = ({ children }) => {
   const { isAuth } = useSelector((s) => s.auth)
-  return (
-    !isAuth
-      ? children
-      : <Navigate to="/" replace />
-  )
+  return !isAuth ? children : <Navigate to="/" replace />
 }
 
 export default OnlyAnonymousRoute

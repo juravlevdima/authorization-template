@@ -1,40 +1,37 @@
-
-
 // ---------------------------------------------------------------
 // ----  This component is an authorization demonstration!!!  ----
 // ---------------------------------------------------------------
 
-
-
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const SignUpPage = () => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passRepeat, setPassRepeat] = useState('')
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [passRepeat, setPassRepeat] = useState("")
   const [resError, setResError] = useState(null)
 
   const signUpButtonClick = () => {
     if (passRepeat !== password) {
-      setResError('Введенные пароли не совпадают')
-      return;
+      setResError("Введенные пароли не совпадают")
+      return
     }
 
     axios({
-      method: 'POST',
-      url: '/api/v1/sign-up',
+      method: "POST",
+      url: "/api/v1/sign-up",
       data: {
         email,
-        password
-      }
-    }).then(() => {
+        password,
+      },
+    })
+      .then(() => {
         alert("Вы зарегистрировались!")
-        navigate('/', { replace: true })
+        navigate("/", { replace: true })
       })
-      .catch(e => e?.response?.data?.error && setResError(e.response.data.error))
+      .catch((e) => e?.response?.data?.error && setResError(e.response.data.error))
   }
 
   return (
