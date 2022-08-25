@@ -5,5 +5,14 @@
   "printWidth": 120,
   "endOfLine": "auto",
   "singleQuote": false,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "(js|jsx|ts|tsx)$",
+    "(png|jpeg|jpg|gif|svg)$",
+    "(tailwind.css)$",
+    "(.s?css)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
