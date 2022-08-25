@@ -12,6 +12,7 @@
     "client:install": "yarn --cwd client install",
     "client:build": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=false yarn --cwd client run build",
     "dev": "cross-env NODE_ENV=development concurrently \"yarn run server\" \"yarn run client\"",
+    "format": "prettier --write './server' './client'",
     "heroku-postbuild": "yarn run client:install && yarn run client:build"
   },
   "dependencies": {
